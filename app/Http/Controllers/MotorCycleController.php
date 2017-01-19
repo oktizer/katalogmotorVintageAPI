@@ -24,7 +24,7 @@ class MotorCycleController extends Controller
         $category = new CategoriesModels;
         $res['success'] = true;
         $res['data'] = $category->all();
-        $this->validateAndResponse($res);
+
         if(empty($res['data'])){
             return response()->json($res,404);
         }
@@ -33,7 +33,7 @@ class MotorCycleController extends Controller
 
     public function viewListMotorCycle($id){
         $res['success'] = true;
-        $res['data'] = MotorCycleModels::SelectAllData('id_category',$id);
+        $res['data'] = MotorCycleModels::SelectAllData('id_category',$id,['id','name','imagecolor1']);
 
         if(empty($res['data'])){
             return response()->json($res,404);

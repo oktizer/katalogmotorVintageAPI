@@ -46,9 +46,9 @@ class MotorCycleModels extends Model
         return $this->hasMany('App\Models\ServiceInfoModels','id');
     }
 
-    public static function SelectAllData($key,$value){
+    public static function SelectAllData($key,$value,$column){
         try{
-            return MotorCycleModels::where($key,'=',$value)->get();
+            return MotorCycleModels::select($column)->where($key,'=',$value)->get();
         }catch (Exception $ex){
             return response()->json($ex,500);
         }
